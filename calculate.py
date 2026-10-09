@@ -1,19 +1,25 @@
-def calculate(operation, numbers):
-    if not numbers:
-        return {"result": None, "error": "No numbers provided"}
+def calculate(operation, numbers, precision=None):
+    if not isinstance(numbers, list) or not numbers:
+        return {"result": None, "error": "Invalid or empty numbers list"}
     
+    res = None
     if operation == 'sum':
-        return {"result": sum(numbers), "error": None}
+        res = sum(numbers)
     elif operation == 'multiply':
         res = 1
         for n in numbers:
             res *= n
-        return {"result": res, "error": None}
     elif operation == 'average':
-        return {"result": sum(numbers) / len(numbers), "error": None}
+        res = sum(numbers) / len(numbers)
     elif operation == 'max':
-        return {"result": max(numbers), "error": None}
-    return {"result": None, "error": "Unsupported operation"}
+        res = max(numbers)
+    else:
+        return {"result": None, "error": "Unsupported operation"}
+    
+    if precision is not None and isinstance(res, (int, float)):
+        res = round(res, precision)
+        
+    return {"result": res, "error": None}
 
 # Example usage
 if __name__ == "__main__":
