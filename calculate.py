@@ -1,18 +1,15 @@
-def calculate(operation, a, b):
-    if operation == 'add':
-        return a + b
-    elif operation == 'subtract':
-        return a - b
+def calculate(operation, numbers):
+    if not numbers:
+        return {"result": None, "error": "No numbers provided"}
+    
+    if operation == 'sum':
+        return {"result": sum(numbers), "error": None}
     elif operation == 'multiply':
-        return a * b
-    elif operation == 'divide':
-        if b == 0:
-            return "Error: Division by zero"
-        return a / b
-    elif operation == 'power':
-        return a ** b
-    else:
-        return "Error: Unsupported operation"
+        res = 1
+        for n in numbers:
+            res *= n
+        return {"result": res, "error": None}
+    return {"result": None, "error": "Unsupported operation"}
 
 # Example usage
 if __name__ == "__main__":
