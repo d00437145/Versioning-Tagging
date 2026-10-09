@@ -9,6 +9,8 @@ def calculate(operation, a, b):
         if b == 0:
             return "Error: Division by zero"
         return a / b
+    elif operation == 'power':
+        return a ** b
     else:
         return "Error: Unsupported operation"
 
