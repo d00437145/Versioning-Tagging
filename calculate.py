@@ -9,6 +9,10 @@ def calculate(operation, numbers):
         for n in numbers:
             res *= n
         return {"result": res, "error": None}
+    elif operation == 'average':
+        return {"result": sum(numbers) / len(numbers), "error": None}
+    elif operation == 'max':
+        return {"result": max(numbers), "error": None}
     return {"result": None, "error": "Unsupported operation"}
 
 # Example usage
